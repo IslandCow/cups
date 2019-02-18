@@ -52,9 +52,9 @@ fuzz: ipp_read_fuzz
 # ipp_read_fuzz
 #
 
-ipp_read_fuzz:	ipp_read_fuzz.o ../cups/$(LIBCUPS)
+ipp_read_fuzz:	ipp_read_fuzz.cxx ../cups/$(LIBCUPS)
 	echo Linking $@...
-	$(LD_CC) $(LDFLAGS) -o ipp_read_fuzz ipp_read_fuzz.o $(LIBS)
+	$(CXX) -I.. -L../cups -lcups -fsanitize=fuzzer -o ipp_read_fuzz ipp_read_fuzz.cxx 
 
 
 #
