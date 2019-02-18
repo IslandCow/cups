@@ -239,6 +239,10 @@ uninstall:
 	$(RM) $(BINDIR)/cups-config
 	-$(RMDIR) $(BINDIR)
 
+fuzz: libs
+	echo Building fuzz tests...
+	cd fuzz; $(MAKE) $(MFLAGS) fuzz
+
 
 #
 # Run the test suite...

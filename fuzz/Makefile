@@ -46,13 +46,15 @@ clean:
 depend:
 	$(CC) -MM $(ALL_CFLAGS) $(OBJS:.o=.c) >Dependencies
 
+fuzz: ipp_read_fuzz
+
 #
 # ipp_read_fuzz
 #
 
 ipp_read_fuzz:	ipp_read_fuzz.o ../cups/$(LIBCUPS)
 	echo Linking $@...
-	$(LD_CC) $(LDFLAGS) -o ipp_read_fuzz ipp_read_fuzz.o -lcups
+	$(LD_CC) $(LDFLAGS) -o ipp_read_fuzz ipp_read_fuzz.o $(LIBS)
 
 
 #
